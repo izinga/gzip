@@ -61,7 +61,6 @@ func (g *gzipHandler) Handle(c *gin.Context) {
 }
 
 func (g *gzipHandler) shouldCompress(req *http.Request) bool {
-	fmt.Println("This is a download link, we are not going to compress", req.URL.Path)
 	if !strings.Contains(req.Header.Get("Accept-Encoding"), "gzip") ||
 		strings.Contains(req.Header.Get("Connection"), "Upgrade") ||
 		strings.Contains(req.Header.Get("Content-Type"), "text/event-stream") {
@@ -69,7 +68,6 @@ func (g *gzipHandler) shouldCompress(req *http.Request) bool {
 		return false
 	}
 	if strings.Contains(req.URL.Path, "download") {
-		fmt.Println("This is a download link, we are not going to compress")
 		return false
 	}
 
