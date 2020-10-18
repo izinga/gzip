@@ -67,7 +67,7 @@ func (g *gzipHandler) shouldCompress(req *http.Request) bool {
 
 		return false
 	}
-	if strings.Contains(req.URL.Path, "download") {
+	if strings.Contains(req.URL.Path, "download") || strings.Contains(req.URL.Path, "storage") {
 		return false
 	}
 
