@@ -64,7 +64,6 @@ func (g *gzipHandler) shouldCompress(req *http.Request) bool {
 	if !strings.Contains(req.Header.Get("Accept-Encoding"), "gzip") ||
 		strings.Contains(req.Header.Get("Connection"), "Upgrade") ||
 		strings.Contains(req.Header.Get("Content-Type"), "text/event-stream") {
-
 		return false
 	}
 	if strings.Contains(req.URL.Path, "download") || strings.Contains(req.URL.Path, "storage") {
